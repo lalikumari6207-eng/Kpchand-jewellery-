@@ -316,6 +316,69 @@
     <div class="grid" id="grid"></div>
   </div>
 </section>
+  <!-- ================= OUR PRODUCT SECTION ================= -->
+<section id="ourproduct" style="padding:60px 20px;background:#F3E9D4;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9C7A3C;">Hamara Sangrah</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#3E0713;margin-top:6px;">Our Product</h2>
+      <div style="width:60px;height:2px;background:#C6A15B;margin:14px auto 0;"></div>
+    </div>
+
+    <div style="text-align:center;font-family:'Poppins',sans-serif;font-size:0.68rem;color:#9C7A3C;margin-bottom:24px;">
+      📌 Sample photos hain (free stock images) — asli product photo nahi
+    </div>
+
+    <div id="opGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px;"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const SHOP_NUMBER = "918409998251";
+  const fmt = n => "₹" + n.toLocaleString('en-IN');
+
+  const OP_PRODUCTS = [
+    { name:"Kalyani Gold Necklace Set", desc:"22K hallmark gold ka bhaari necklace set, shaadi aur tyohaar ke liye perfect, temple-style kaarigari ke saath.", price:185000,
+      photo:"https://images.unsplash.com/photo-1758995115682-1452a1a9e35b?w=600&h=600&fit=crop&auto=format&q=70" },
+    { name:"22K Gold Chain – Men's", desc:"Solid 22K gold chain, roz pehnne aur khaas mauko dono ke liye durable aur stylish design.", price:68000,
+      photo:"https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=600&h=600&fit=crop&auto=format&q=70" },
+    { name:"Gold Signet Ring", desc:"Classic gold ring, 22K gold mein, roz ke istemal ke liye durable finish, gift ke liye bhi behtareen.", price:38000,
+      photo:"https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?w=600&h=600&fit=crop&auto=format&q=70" },
+    { name:"Antique Gold Jhumka Earrings", desc:"Antique finish jhumke, traditional motifs ke saath — sari aur lehenga dono par jachte hain.", price:32000,
+      photo:"https://images.unsplash.com/photo-1704445010872-2faefdd733aa?w=600&h=600&fit=crop&auto=format&q=70" },
+    { name:"Diamond Solitaire Ring", desc:"Certified solitaire diamond, 18K white gold band mein, engagement aur khaas tohfon ke liye.", price:95000,
+      photo:"https://images.unsplash.com/photo-1747933509433-c58152c10ee7?w=600&h=600&fit=crop&auto=format&q=70" },
+    { name:"Silver Payal Pair", desc:"Shudh chandi ki dhundhli ghungroo wali payal, traditional ghar-parivaar ke liye pasandida.", price:12500,
+      photo:"https://images.unsplash.com/photo-1656010280156-fa8c1793c235?w=600&h=600&fit=crop&auto=format&q=70" }
+  ];
+
+  function opWaLink(p){
+    const msg = `Namaste, mujhe is product ke baare mein jaankari chahiye:%0A%0A📿 *${p.name}*%0A💰 Price: ${fmt(p.price)}%0A📝 ${p.desc}%0A%0AKripya photo aur availability share karein.`;
+    return `https://wa.me/${SHOP_NUMBER}?text=${msg}`;
+  }
+
+  document.getElementById('opGrid').innerHTML = OP_PRODUCTS.map(p => `
+    <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(60,20,10,0.14);border:1px solid rgba(156,122,60,0.18);display:flex;flex-direction:column;">
+      <div style="position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,#F3E9D4,#E7C777);overflow:hidden;">
+        <img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <span style="position:absolute;bottom:10px;right:10px;background:rgba(43,27,18,0.6);color:#fff;font-family:'Poppins',sans-serif;font-size:0.55rem;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;">Sample Photo</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#3E0713;margin-bottom:6px;">${p.name}</h3>
+        <p style="font-size:0.85rem;color:#6b5a4a;line-height:1.55;margin-bottom:12px;flex:1;">${p.desc}</p>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;margin-bottom:14px;">
+          <span style="display:block;font-size:0.66rem;color:#9C7A3C;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;">Price</span>${fmt(p.price)}
+        </div>
+        <div style="display:flex;gap:8px;">
+          <a href="tel:+${SHOP_NUMBER}" style="flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:0.76rem;font-weight:600;padding:11px 8px;border-radius:999px;background:#5C0E1E;color:#FBF6EC;text-decoration:none;">📞 Contact Now</a>
+          <a href="${opWaLink(p)}" target="_blank" rel="noopener" style="flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:0.76rem;font-weight:600;padding:11px 8px;border-radius:999px;background:#25D366;color:#fff;text-decoration:none;">💬 Message</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+})();
+</script>
 
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials reveal">
